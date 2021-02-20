@@ -1,7 +1,8 @@
-function App() {
+import MemoryCard from "./components/MemoryCard"
+export default function App() {
   return (
-    <div></div>
+    <div>
+      <MemoryCard/>
+    </div>
   );
 }
-
-export default App;
