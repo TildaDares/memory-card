@@ -5,7 +5,7 @@ import arya from "../images/arya.jpg";
 import cersei from "../images/cersei.jpg";
 import jaime from "../images/jaime.jpg";
 import jon from "../images/jon.jpg";
-import margaret from "../images/margaret.jpg";
+import margaery from "../images/margaery.jpg";
 import sansa from "../images/sansa.jpg";
 import tyrion from "../images/tyrion.jpg";
 
@@ -15,7 +15,7 @@ export default function MemoryCard() {
 		{ src: jon, id: uniqid(), clicked: false, name: "Jon Snow" },
 		{ src: arya, id: uniqid(), clicked: false, name: "Arya Stark" },
 		{ src: cersei, id: uniqid(), clicked: false, name: "Cersei Lannister" },
-		{ src: margaret, id: uniqid(), clicked: false, name: "Margaery Tyrell" },
+		{ src: margaery, id: uniqid(), clicked: false, name: "Margaery Tyrell" },
 		{ src: sansa, id: uniqid(), clicked: false, name: "Sansa Stark" },
 		{ src: tyrion, id: uniqid(), clicked: false, name: "Tyrion Lannister" },
 		{ src: jaime, id: uniqid(), clicked: false, name: "Jaime Lannister" },
