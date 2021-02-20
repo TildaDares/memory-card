@@ -1,8 +1,8 @@
-import MemoryCard from "./components/MemoryCard"
+import MemoryCard from "./components/MemoryCard";
 export default function App() {
-  return (
-    <div>
-      <MemoryCard/>
-    </div>
-  );
+	return (
+		<div>
+			<MemoryCard />
+		</div>
+	);
 }
