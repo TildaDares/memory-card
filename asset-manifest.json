@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/memory-card/static/css/main.4e7e7b3f.chunk.css",
+    "main.js": "/memory-card/static/js/main.55e4f713.chunk.js",
+    "main.js.map": "/memory-card/static/js/main.55e4f713.chunk.js.map",
+    "runtime-main.js": "/memory-card/static/js/runtime-main.714dd9e2.js",
+    "runtime-main.js.map": "/memory-card/static/js/runtime-main.714dd9e2.js.map",
+    "static/js/2.6253c808.chunk.js": "/memory-card/static/js/2.6253c808.chunk.js",
+    "static/js/2.6253c808.chunk.js.map": "/memory-card/static/js/2.6253c808.chunk.js.map",
+    "index.html": "/memory-card/index.html",
+    "static/css/main.4e7e7b3f.chunk.css.map": "/memory-card/static/css/main.4e7e7b3f.chunk.css.map",
+    "static/js/2.6253c808.chunk.js.LICENSE.txt": "/memory-card/static/js/2.6253c808.chunk.js.LICENSE.txt",
+    "static/media/arya.a64e972e.jpg": "/memory-card/static/media/arya.a64e972e.jpg",
+    "static/media/cersei.c72e0bc5.jpg": "/memory-card/static/media/cersei.c72e0bc5.jpg",
+    "static/media/jaime.f22349e3.jpg": "/memory-card/static/media/jaime.f22349e3.jpg",
+    "static/media/jon.e775ccb6.jpg": "/memory-card/static/media/jon.e775ccb6.jpg",
+    "static/media/khaleesi.d85f5704.jpg": "/memory-card/static/media/khaleesi.d85f5704.jpg",
+    "static/media/margaery.99a12421.jpg": "/memory-card/static/media/margaery.99a12421.jpg",
+    "static/media/sansa.9174818d.jpg": "/memory-card/static/media/sansa.9174818d.jpg",
+    "static/media/tyrion.5b9c4765.jpg": "/memory-card/static/media/tyrion.5b9c4765.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.714dd9e2.js",
+    "static/js/2.6253c808.chunk.js",
+    "static/css/main.4e7e7b3f.chunk.css",
+    "static/js/main.55e4f713.chunk.js"
+  ]
+}
