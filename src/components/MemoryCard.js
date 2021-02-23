@@ -20,32 +20,31 @@ export default function MemoryCard() {
 		{ src: tyrion, id: uniqid(), clicked: false, name: "Tyrion Lannister" },
 		{ src: jaime, id: uniqid(), clicked: false, name: "Jaime Lannister" },
 	];
-	const [imgArr, setImgArr] = useState(shuffle(initImgArr));
+	const [imgArr, setImgArr] = useState(initImgArr);
 
 	useEffect(() => {
 		setImgArr(shuffle(imgArr));
-	}, [imgArr]);
+	}, []);
 
 	const [score, setScore] = useState(0);
 	const [highScore, setHighScore] = useState(0);
 
 	function handleCardClick(event) {
-		setImgArr(
-			imgArr.map((img) => {
-				if (img.id === event.target.id) {
-					if (!img.clicked) {
-            img.clicked = !img.clicked;
-						setScore(score + 1);
-					} else {
-            if (highScore < score) {
-              setHighScore(score)
-            }
-            setScore(0);
-          }
+		const imgMem = imgArr.find((img) => img.id === event.currentTarget.id);
+		if (imgMem.clicked) {
+			setImgArr(shuffle(initImgArr));
+			setHighScore(Math.max(highScore, score));
+			setScore(0);
+		} else {
+			const updatedArr = imgArr.map((img) => {
+				if (img.id === event.currentTarget.id) {
+					img.clicked = !img.clicked;
+					setScore(score + 1);
 				}
 				return img;
-			})
-		);
+			});
+			setImgArr(shuffle(updatedArr));
+		}
 	}
 
 	function shuffle(arr) {
