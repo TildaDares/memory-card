@@ -21,13 +21,15 @@ export default function MemoryCard() {
 		{ src: jaime, id: uniqid(), clicked: false, name: "Jaime Lannister" },
 	];
 	const [imgArr, setImgArr] = useState(initImgArr);
+	const [score, setScore] = useState(0);
+	const [highScore, setHighScore] = useState(0);
 
 	function handleCardClick(event) {
 		setImgArr(
 			imgArr.map((img) => {
 				if (img.id === event.target.id) {
 					img.clicked = !img.clicked;
-          alert(img.clicked);
+					alert(img.clicked);
 				}
 				return img;
 			})
@@ -35,20 +37,30 @@ export default function MemoryCard() {
 	}
 
 	return (
-		<div className="md:container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
-			{imgArr.map((img) => (
-				<div
-					className="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
-					id={img.id}
-					onClick={handleCardClick}
-          key={img.id}
-				>
-					<img className="w-full h-100 object-cover" src={img.src} alt={img.name} />
-					<p className="text-center font-mono text-white text-lg font-semibold mt-4">
-						{img.name}
-					</p>
-				</div>
-			))}
+		<div className="md:container mx-auto font-mono">
+			<div className="text-center text-white text-lg mt-5">
+				<p>Score: {score}</p>
+				<p>HighScore: {highScore}</p>
+			</div>
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
+				{imgArr.map((img) => (
+					<div
+						className="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
+						id={img.id}
+						onClick={handleCardClick}
+						key={img.id}
+					>
+						<img
+							className="w-full h-100 object-cover"
+							src={img.src}
+							alt={img.name}
+						/>
+						<p className="text-center font-mono text-white text-lg font-semibold mt-4">
+							{img.name}
+						</p>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
