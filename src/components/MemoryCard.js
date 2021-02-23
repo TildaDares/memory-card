@@ -22,15 +22,29 @@ export default function MemoryCard() {
 	];
 	const [imgArr, setImgArr] = useState(initImgArr);
 
+	function handleCardClick(event) {
+		setImgArr(
+			imgArr.map((img) => {
+				if (img.id === event.target.id) {
+					img.clicked = !img.clicked;
+          alert(img.clicked);
+				}
+				return img;
+			})
+		);
+	}
+
 	return (
-		<div class="md:container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
+		<div className="md:container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
 			{imgArr.map((img) => (
 				<div
-					class="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
+					className="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
 					id={img.id}
+					onClick={handleCardClick}
+          key={img.id}
 				>
-					<img class="w-full h-100 object-cover" src={img.src} alt={img.name} />
-					<p class="text-center font-mono text-white text-lg font-semibold mt-4">
+					<img className="w-full h-100 object-cover" src={img.src} alt={img.name} />
+					<p className="text-center font-mono text-white text-lg font-semibold mt-4">
 						{img.name}
 					</p>
 				</div>
