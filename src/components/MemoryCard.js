@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import khaleesi from "../images/khaleesi.jpg";
 import arya from "../images/arya.jpg";
@@ -20,7 +20,12 @@ export default function MemoryCard() {
 		{ src: tyrion, id: uniqid(), clicked: false, name: "Tyrion Lannister" },
 		{ src: jaime, id: uniqid(), clicked: false, name: "Jaime Lannister" },
 	];
-	const [imgArr, setImgArr] = useState(initImgArr);
+	const [imgArr, setImgArr] = useState(shuffle(initImgArr));
+
+	useEffect(() => {
+		setImgArr(shuffle(imgArr));
+	}, [imgArr]);
+
 	const [score, setScore] = useState(0);
 	const [highScore, setHighScore] = useState(0);
 
@@ -36,6 +41,17 @@ export default function MemoryCard() {
 				return img;
 			})
 		);
+	}
+
+	function shuffle(arr) {
+		let copyArr = arr;
+		for (let i = copyArr.length - 1; i > 0; i--) {
+			let rand = Math.floor(Math.random() * (i + 1));
+			let temp = copyArr[i];
+			copyArr[i] = copyArr[rand];
+			copyArr[rand] = temp;
+		}
+		return copyArr;
 	}
 
 	return (
