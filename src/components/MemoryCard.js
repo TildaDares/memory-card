@@ -23,9 +23,17 @@ export default function MemoryCard() {
 	const [imgArr, setImgArr] = useState(initImgArr);
 
 	return (
-		<div>
+		<div class="md:container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
 			{imgArr.map((img) => (
-				<img src={img.src} alt={img.name} />
+				<div
+					class="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
+					id={img.id}
+				>
+					<img class="w-full h-100 object-cover" src={img.src} alt={img.name} />
+					<p class="text-center font-mono text-white text-lg font-semibold mt-4">
+						{img.name}
+					</p>
+				</div>
 			))}
 		</div>
 	);
