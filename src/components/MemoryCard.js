@@ -34,9 +34,14 @@ export default function MemoryCard() {
 			imgArr.map((img) => {
 				if (img.id === event.target.id) {
 					if (!img.clicked) {
+            img.clicked = !img.clicked;
 						setScore(score + 1);
-					}
-					img.clicked = !img.clicked;
+					} else {
+            if (highScore < score) {
+              setHighScore(score)
+            }
+            setScore(0);
+          }
 				}
 				return img;
 			})
