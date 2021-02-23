@@ -28,6 +28,50 @@ export default function MemoryCard() {
 
 	const [score, setScore] = useState(0);
 	const [highScore, setHighScore] = useState(0);
+  const [playAgain, setPlayAgain] = useState(false);
+
+	function displayGameResult(result) {
+		return (
+			<div className="container flex items-center justify-center h-screen">
+				<div className="container bg-gray-800 max-w-md py-6 px-4 rounded-lg">
+					<p className="text-xl text-white text-center">You {result}!</p>
+					<button className="bg-blue-500 float-right rounded-lg p-3 mt-2 text-white">
+						Play Again
+					</button>
+				</div>
+			</div>
+		);
+	}
+
+	function displayCards() {
+		return (
+			<div>
+				<div className="text-center text-white text-xl mt-5">
+					<p>Score: {score}</p>
+					<p>HighScore: {highScore}</p>
+				</div>
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
+					{imgArr.map((img) => (
+						<div
+							className="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
+							id={img.id}
+							onClick={handleCardClick}
+							key={img.id}
+						>
+							<img
+								className="w-full h-100 object-cover"
+								src={img.src}
+								alt={img.name}
+							/>
+							<p className="text-center font-mono text-white text-lg font-semibold mt-4">
+								{img.name}
+							</p>
+						</div>
+					))}
+				</div>
+			</div>
+		);
+	}
 
 	function handleCardClick(event) {
 		const imgMem = imgArr.find((img) => img.id === event.currentTarget.id);
@@ -45,6 +89,17 @@ export default function MemoryCard() {
 			});
 			setImgArr(shuffle(updatedArr));
 		}
+    if(score === 0 || score === 8){
+      setPlayAgain(true);
+    }
+	}
+
+	function displayBody() {
+		if (playAgain) {
+			let result = score === 0 ? "lost" : "won";
+			return displayGameResult(result);
+		}
+		return displayCards();
 	}
 
 	function shuffle(arr) {
@@ -58,31 +113,5 @@ export default function MemoryCard() {
 		return copyArr;
 	}
 
-	return (
-		<div className="md:container mx-auto font-mono">
-			<div className="text-center text-white text-lg mt-5">
-				<p>Score: {score}</p>
-				<p>HighScore: {highScore}</p>
-			</div>
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 p-7">
-				{imgArr.map((img) => (
-					<div
-						className="bg-gray-800 shadow-lg cursor-pointer pb-5 rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-4"
-						id={img.id}
-						onClick={handleCardClick}
-						key={img.id}
-					>
-						<img
-							className="w-full h-100 object-cover"
-							src={img.src}
-							alt={img.name}
-						/>
-						<p className="text-center font-mono text-white text-lg font-semibold mt-4">
-							{img.name}
-						</p>
-					</div>
-				))}
-			</div>
-		</div>
-	);
+	return <div className="md:container mx-auto font-mono">{displayBody()}</div>;
 }
