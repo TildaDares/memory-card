@@ -27,15 +27,30 @@ export default function MemoryCard() {
 	}, []);
 
 	const [score, setScore] = useState(0);
+
+	useEffect(() => {
+		if (score === 8) {
+			setPlaying(false);
+		}
+	}, [score]);
+
 	const [highScore, setHighScore] = useState(0);
-  const [playAgain, setPlayAgain] = useState(false);
+	const [playing, setPlaying] = useState(true);
+
+	function resetGame() {
+		setPlaying(true);
+		resetScores();
+	}
 
 	function displayGameResult(result) {
 		return (
 			<div className="container flex items-center justify-center h-screen">
 				<div className="container bg-gray-800 max-w-md py-6 px-4 rounded-lg">
 					<p className="text-xl text-white text-center">You {result}!</p>
-					<button className="bg-blue-500 float-right rounded-lg p-3 mt-2 text-white">
+					<button
+						className="bg-blue-500 float-right rounded p-3 mt-2 text-white"
+						onClick={resetGame}
+					>
 						Play Again
 					</button>
 				</div>
@@ -76,9 +91,7 @@ export default function MemoryCard() {
 	function handleCardClick(event) {
 		const imgMem = imgArr.find((img) => img.id === event.currentTarget.id);
 		if (imgMem.clicked) {
-			setImgArr(shuffle(initImgArr));
-			setHighScore(Math.max(highScore, score));
-			setScore(0);
+			setPlaying(false);
 		} else {
 			const updatedArr = imgArr.map((img) => {
 				if (img.id === event.currentTarget.id) {
@@ -89,14 +102,17 @@ export default function MemoryCard() {
 			});
 			setImgArr(shuffle(updatedArr));
 		}
-    if(score === 0 || score === 8){
-      setPlayAgain(true);
-    }
+	}
+
+	function resetScores() {
+		setImgArr(shuffle(initImgArr));
+		setHighScore(Math.max(highScore, score));
+		setScore(0);
 	}
 
 	function displayBody() {
-		if (playAgain) {
-			let result = score === 0 ? "lost" : "won";
+		if (!playing) {
+			let result = score < 8 ? "lose" : "win";
 			return displayGameResult(result);
 		}
 		return displayCards();
